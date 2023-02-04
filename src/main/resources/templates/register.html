@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/register.css}" />
+  <title>Document</title>
+</head>
+<body>
+<div class="form-container">
+  <div class="img-signup">
+    <div class="img-container">
+      <img th:src="@{/img/pexels-victor-miyata-1824273.jpg}" alt="" />
+    </div>
+    <div class="signup-Container">
+      <div class="form-header">
+        <p>Already have an account?</p>
+<!--        <button class="signup-btn">sign in</button>-->
+        <a th:href="@{/regSignIn}" target="_parent"><button class="signup-btn">sign in</button></a>
+      </div>
+      <div class="form-body">
+        <div class="form-title">
+          <h1>Activity time tracker</h1>
+        </div>
+        <p>Register your account</p>
+        <form th:action="@{/register}" th:object="${user}" method ="post">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text"th:field="*{name}" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" th:field="*{username}" id="username" name="username" required />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" id="password" name="password" required />
+          </div>
+          <button class="register-btn" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

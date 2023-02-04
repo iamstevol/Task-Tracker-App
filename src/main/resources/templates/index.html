@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracker Login</title>
+  <!-- Link for css -->
+  <link rel="stylesheet" th:href="@{/login.css}" />
+  <!-- Link for icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+  <div class="div-text">
+    <img th:src="@{/img/pexels-victor-miyata-1824273.jpg}" alt="">
+  </div>
+  <div class="div-form">
+    <h2>Activity Time Tracker</h2>
+    <form th:action="@{/login}" th:object="${user}" method ="post">
+      <div class="inp">
+        <i class="fa-regular fa-user"></i>
+        <input type="text" th:field="*{email}" placeholder="Email Address">
+      </div>
+      <div class="inp">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" th:field="*{password}" placeholder="Password">
+        <i class="fa-solid fa-eye eyes"></i>
+      </div>
+      <div class="check">
+        <input type="checkbox">
+        <span>Remember Me</span>
+      </div>
+      <button class="btn" type="submit">Sign in</button>
+      <span class="spn-regs">Not a member? <a th:href="@{/signUp}">  Register Now</a></span>
+    </form>
+  </div>
+</div>
+</body>
+</html>

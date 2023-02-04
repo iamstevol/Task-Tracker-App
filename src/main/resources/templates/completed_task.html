@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span th:text="${user.getUsername()}" class="fs-5 d-none d-sm-inline"></span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a th:href="@{/list}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <!--                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">-->
+                        <!--                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>-->
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a th:href="@{/addEmployeeForm}" class="nav-link px-0"> <span class="d-none d-sm-inline"></span>Completed Task </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/addEmployeeForm}" class="nav-link px-0"> <span class="d-none d-sm-inline"></span>Pending Task </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/addEmployeeForm}" class="nav-link px-0"> <span class="d-none d-sm-inline"></span>In-progress Task </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--                    <li>-->
+                    <!--                        <a href="#" class="nav-link px-0 align-middle">-->
+                    <!--                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>-->
+                    <!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">-->
+                    <!--                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>-->
+                    <!--                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">-->
+                    <!--                            <li class="w-100">-->
+                    <!--                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </li>-->
+
+                    <!--                    <li>-->
+                    <!--                        <a href="#" class="nav-link px-0 align-middle">-->
+                    <!--                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>-->
+                    <!--                    </li>-->
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">-->
+                        <span class="d-none d-sm-inline mx-1">Log Out</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="container">
+
+                <h2>Activity Tracker</h2>
+                <hr/>
+
+<!--                <a th:href="@{/add_Task}" class="btn btn-primary mb-2">Add Task</a>-->
+                <table class="table table-bordered table-striped" id="employee-table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Created Date</th>
+                        <th>Updated Date</th>
+                        <th>Completed Date</th>
+                        <th>Action</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task, index:${tasks}" >
+                        <!--            th:object="${task}" method ="post"-->
+                        <!--            th:each="task:${employees}"-->
+                        <td th:text="${task.title}"></td>
+                        <td th:text="${task.description}"></td>
+                        <td th:text="${task.timeCreated}"></td>
+                        <td th:text="${task.timeUpdated}"></td>
+                        <td th:text="${task.timeCompleted}"></td>
+                        <td>
+                            <a th:href="@{/edit_task/{taskId}(taskId=${task.getTaskId()})}" class="btn btn-info">Edit</a>
+                            <a th:href="@{/delete_task/{taskId}(taskId=${task.getTaskId()})}" method="get" class="btn btn-danger ml-2">Delete</a>
+                        </td>
+                        <td th:text="${task.status}"></td>
+                        <td>
+                            <a th:href="@{/reverse_Task/{reverseTask}(reverseTask=${task.getTaskId()})}" method="get" class="btn btn-info">reverse</a>
+                            <a th:href="@{/forward_Task/{forwardTask}(forwardTask=${task.getTaskId()})}" method="get" class="btn btn-info">forward</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

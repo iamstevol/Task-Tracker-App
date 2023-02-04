@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    /* background-color: red; */
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.img-signup {
+    background-color:white;
+    display: flex;
+    width: 100%;
+    /* max-width: 800px; */
+    height: 100%;
+}
+
+.img-container {
+    width: 50%;
+    height: 100%;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signup-Container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:0 20px;
+    box-sizing: border-box;
+}
+
+.form-header {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content:right;
+    margin-bottom: 20px;
+    /* background-color: red; */
+    align-items: center ;
+    margin-right: 10px;
+
+}
+.form-header >p{
+    margin-right: 30px;
+    color:rgb(115, 113, 113);
+    font-size: 18px;
+}
+
+.signup-btn{
+    padding: 10px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius:  20px;
+    border-bottom-left-radius:  20px;
+    border: 2px solid blueviolet;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+}
+.signup-btn:hover{
+    border: 2px solid grey;
+    background-color: blueviolet;
+    color:white;
+    cursor: pointer;
+
+}
+
+.form-body{
+    width: 80%;
+}
+.form-title > h1{
+    font-weight: 1500;
+    text-transform: capitalize;
+    font-size: 35px;
+    padding-bottom: 20px;
+}
+form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form div {
+    margin: 1em 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+form label,
+form input {
+    margin-top: 0.5em;
+    /* font-size: 20px; */
+    font-weight: 800;
+    color: grey;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: 0.8em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input:focus{
+    border:2px solid red;
+}
+
+
+form button[type="submit"] {
+    margin-top: 1em;
+    text-align: center;
+    background-color: blueviolet;
+    padding: 12px 70px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius:  25px;
+    border-bottom-left-radius:  25px;
+    cursor: pointer;
+    color:white;
+    font-size: 20px;
+}
+form button[type="submit"]:hover{
+    background-color: white;
+    color:blueviolet;
+    border-radius:3px solid blueviolet;
+}
