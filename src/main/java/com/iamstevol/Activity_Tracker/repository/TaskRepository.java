@@ -62,11 +62,11 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "select * from task t where t.status = 1 and t.user_id = :userId", nativeQuery = true)
-    List<Task> findAllTaskByInProgress(@Param("userId") Long userId);
+    @Query(value = "select * from task t where t.status = ?1 and t.user_id = ?2", nativeQuery = true)
+    List<Task> findAllTaskByInProgress(String status, Long userId);
 
     @Modifying
     @Transactional
-    @Query(value = "select * from task t where t.status = 2 and t.user_id = :userId", nativeQuery = true)
-    List<Task> findAllTaskByCompleted(@Param("userId") Long userId);
+    @Query(value = "select * from task t where t.status = ?1 and t.user_id = ?2", nativeQuery = true)
+    List<Task> findAllTaskByCompleted(String status, Long userId);
 }

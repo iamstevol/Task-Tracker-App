@@ -175,11 +175,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public List<Task> findByInProgress(Long userId) {
-        return taskRepository.findAllTaskByInProgress(userId);
+        return taskRepository.findAllTaskByInProgress("IN_PROGRESS", userId);
     }
 
     public List<Task> findByCompleted(Long userId) {
-        return taskRepository.findAllTaskByCompleted(userId);
+        return taskRepository.findAllTaskByCompleted("COMPLETED", userId);
     }
 
 

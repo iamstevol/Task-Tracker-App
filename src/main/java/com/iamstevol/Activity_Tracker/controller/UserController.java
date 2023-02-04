@@ -97,12 +97,35 @@ public class UserController {
         User user = (User) httpSession.getAttribute("user");
 
         List<Task> tasks = taskServiceImpl.findByPending(user.getUserId());
-//        List<Task> tasks = taskServiceImpl.findByPending(taskId);
         System.out.println(tasks);
         model.addAttribute("tasks", tasks);
         model.addAttribute("user", user);
 
         return "pending_task";
+    }
+
+    @GetMapping("/completed-task")
+    public String getCompletedTask(HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Task> tasks = taskServiceImpl.findByCompleted(user.getUserId());
+        System.out.println(tasks);
+        model.addAttribute("tasks", tasks);
+        model.addAttribute("user", user);
+
+        return "completed_task";
+    }
+
+    @GetMapping("/progress-task")
+    public String getInProgressTask(HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Task> tasks = taskServiceImpl.findByInProgress(user.getUserId());
+        System.out.println(tasks);
+        model.addAttribute("tasks", tasks);
+        model.addAttribute("user", user);
+
+        return "in_progress_task";
     }
 
 }
